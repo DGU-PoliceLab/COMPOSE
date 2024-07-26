@@ -1,0 +1,42 @@
+version: "3"
+services:
+    redis:
+        container_name: pls-redis
+        image: redis
+        ports:
+            - 16379:6379
+    mysql:
+        container_name: pls-mysql
+        image: mysql
+        environment:
+            MYSQL_DATABASE: pls
+            MYSQL_ROOT_PASSWORD: 1q2w3e4r!
+            MYSQL_USER: policelab
+            MYSQL_PASSWORD: 1q2w3e4r!
+            TZ: Asia/Seoul
+        command:
+            - --character-set-server=utf8mb4
+            - --collation-server=utf8mb4_unicode_ci
+        ports:
+            - 13306:3306
+    was:
+        container_name: pls-was
+        image: was
+        environment:
+            REDIS_HOST: redis
+            REDIS_PORT: 6379
+            REDIS_DATABASE: 0
+            MYSQL_HOST: mysql
+            MYSQL_PORT: 3306
+            MYSQL_USER: root
+            MYSQL_PASSWORD: 1q2w3e4r!
+            MYSQL_DATABASE: pls
+            MYSQL_CHARSET: utf8
+        ports:
+            - 40000:40000
+    web:
+        container_name: pls-web
+        image: web
+        ports:
+            - 80:80
+            - 443:443
