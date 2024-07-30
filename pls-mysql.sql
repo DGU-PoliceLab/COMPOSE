@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: localhost    Database: pls
 -- ------------------------------------------------------
--- Server version	9.0.0
+-- Server version	9.0.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `cctv` (
 
 LOCK TABLES `cctv` WRITE;
 /*!40000 ALTER TABLE `cctv` DISABLE KEYS */;
-INSERT INTO `cctv` VALUES (1,'테스트 CCTV 1','rtsp://210.99.70.120:1935/live/cctv001.stream','2024-07-20 17:22:35'),(2,'테스트 CCTV 2','rtsp://210.99.70.120:1935/live/cctv002.stream','2024-07-20 17:22:35'),(3,'테스트 CCTV 3','rtsp://210.99.70.120:1935/live/cctv003.stream','2024-07-20 17:22:35'),(4,'테스트 CCTV 4','rtsp://210.99.70.120:1935/live/cctv004.stream','2024-07-20 17:22:35'),(5,'테스트 CCTV 5','rtsp://210.99.70.120:1935/live/cctv005.stream','2024-07-20 17:22:35'),(6,'테스트 CCTV 6','rtsp://210.99.70.120:1935/live/cctv006.stream','2024-07-20 17:22:35'),(7,'테스트 CCTV 7','rtsp://210.99.70.120:1935/live/cctv007.stream','2024-07-20 17:22:35'),(28,'테스트 CCTV 8','rtsp://210.99.70.120:1935/live/cctv008.stream','2024-07-27 01:39:12');
+INSERT INTO `cctv` VALUES (1,'엣지카메라(현관)','rtsp://admin:wonwoo0!23@172.30.1.42/stream1','2024-07-20 17:22:35'),(2,'엣지카메라(동국대)','rtsp://admin:admin@172.30.1.30/stream1','2024-07-30 17:38:59'),(3,'웹캠(동국대)','rtsp://192.168.50.40:8554/stream','2024-07-30 17:39:55');
 /*!40000 ALTER TABLE `cctv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +86,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'유치실1',1),(2,'유치실2',2),(3,'유치실3',3),(4,'유치실4',4),(5,'유치실5',5),(6,'유치실6',6),(7,'유치실7',7);
+INSERT INTO `location` VALUES (1,'유치실1',1);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,4 +126,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-29  0:30:41
+-- Dump completed on 2024-07-30 17:40:33
