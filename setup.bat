@@ -4,37 +4,62 @@ cd /d "%~dp0"
 echo STEP 1: Loading Docker images...
 cd images
 
-echo - Loading web image...
-docker load -i pls-web.tar
+echo - Checking and loading web image...
+docker images -q pls-web > nul 2>&1
 if %errorlevel% neq 0 (
-    echo Failed to load pls-web.tar image!
-    pause
-    exit /b %errorlevel%
+    echo - Loading web image...
+    docker load -i pls-web.tar
+    if %errorlevel% neq 0 (
+        echo Failed to load pls-web.tar image!
+        pause
+        exit /b %errorlevel%
+    )
+) else (
+    echo Web image already exists, skipping load.
 )
 
-echo - Loading was image...
-docker load -i pls-was.tar
+echo - Checking and loading was image...
+docker images -q pls-was > nul 2>&1
 if %errorlevel% neq 0 (
-    echo Failed to load pls-was.tar image!
-    pause
-    exit /b %errorlevel%
+    echo - Loading was image...
+    docker load -i pls-was.tar
+    if %errorlevel% neq 0 (
+        echo Failed to load pls-was.tar image!
+        pause
+        exit /b %errorlevel%
+    )
+) else (
+    echo Was image already exists, skipping load.
 )
 
-echo - Loading mysql image...
-docker load -i pls-mysql.tar
+echo - Checking and loading mysql image...
+docker images -q pls-mysql > nul 2>&1
 if %errorlevel% neq 0 (
-    echo Failed to load pls-mysql.tar image!
-    pause
-    exit /b %errorlevel%
+    echo - Loading mysql image...
+    docker load -i pls-mysql.tar
+    if %errorlevel% neq 0 (
+        echo Failed to load pls-mysql.tar image!
+        pause
+        exit /b %errorlevel%
+    )
+) else (
+    echo MySQL image already exists, skipping load.
 )
 
-echo - Loading redis image...
-docker load -i pls-redis.tar
+echo - Checking and loading redis image...
+docker images -q pls-redis > nul 2>&1
 if %errorlevel% neq 0 (
-    echo Failed to load pls-redis.tar image!
-    pause
-    exit /b %errorlevel%
+    echo - Loading redis image...
+    docker load -i pls-redis.tar
+    if %errorlevel% neq 0 (
+        echo Failed to load pls-redis.tar image!
+        pause
+        exit /b %errorlevel%
+    )
+) else (
+    echo Redis image already exists, skipping load.
 )
+
 
 echo STEP 1: Docker images loaded successfully!
 cd ..
@@ -48,6 +73,17 @@ if %errorlevel% neq 0 (
 )
 
 echo STEP 2: Containers started successfully!
+
+echo STEP 3: Setting Mysql Schema...
+TIMEOUT 3
+mysql -u root -p1q2w3e4r! -P 13306 pls -e "source pls-mysql.sql"
+if %errorlevel% neq 0 (
+    echo Failed to setting mysql schema!
+    pause
+    exit /b %errorlevel%
+)
+
+echo STEP 3: Mysql schema setting successfully!
 
 echo All tasks completed successfully.
 pause
