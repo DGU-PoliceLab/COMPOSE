@@ -83,6 +83,6 @@ docker restart pls-was
 # Step 5. 접속 및 확인
 
 - [WEB](https://localhost) *알람 권한 설정 팝업이 뜨면 허용해주세요.*
-- [WAS](https://localhost:40000) *컨테이너 실행(재실행) 후, 30~1분간 접속이 불가능할 수 있습니다.*
+- [WAS](https://localhost:40000) *컨테이너 실행(재실행) 후, 30초~1분간 접속이 불가능할 수 있습니다.*
 - [API DOCS](https://localhost:40000/docs)   
 - [API DOCS(redoc)](https://localhost:40000/redoc)   
