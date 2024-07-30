@@ -41,6 +41,11 @@ ead6a63a0660   web       "/docker-entrypoint.…"   30 minutes ago   Up 30 minut
 # Step3. MySQL 데이터베이스 설정
 > Step 1에서 setup.bat 실행 시, 문제없이 완료되었다면 이 단계를 건너 뛸 수 있습니다.
 
+> 아래 명령어를 우선적으로 시도해보세요. 해당 과정을 위해 mysql shell 또는 cli가 필요할 수 있습니다.
+```
+mysql -u root -p1q2w3e4r! -P 13306 pls -e "source pls-mysql.sql"
+```
+
 MySQL Workbench를 통해 이 작업을 진행합니다. 
 [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/)
 
