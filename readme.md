@@ -39,6 +39,7 @@ ead6a63a0660   web       "/docker-entrypoint.…"   30 minutes ago   Up 30 minut
 ```
 
 # Step3. MySQL 데이터베이스 설정
+> Step 1에서 setup.bat 실행 시, 문제없이 완료되었다면 이 단계를 건너 뛸 수 있습니다.
 
 MySQL Workbench를 통해 이 작업을 진행합니다. 
 [MySQL Workbench Download](https://dev.mysql.com/downloads/workbench/)
