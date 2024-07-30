@@ -4,62 +4,37 @@ cd /d "%~dp0"
 echo STEP 1: Loading Docker images...
 cd images
 
-echo - Checking and loading web image...
-docker images -q pls-web > nul 2>&1
+echo - Loading web image...
+docker load -i pls-web.tar
 if %errorlevel% neq 0 (
-    echo - Loading web image...
-    docker load -i pls-web.tar
-    if %errorlevel% neq 0 (
-        echo Failed to load pls-web.tar image!
-        pause
-        exit /b %errorlevel%
-    )
-) else (
-    echo Web image already exists, skipping load.
+    echo Failed to load pls-web.tar image!
+    pause
+    exit /b %errorlevel%
 )
 
-echo - Checking and loading was image...
-docker images -q pls-was > nul 2>&1
+echo - Loading was image...
+docker load -i pls-was.tar
 if %errorlevel% neq 0 (
-    echo - Loading was image...
-    docker load -i pls-was.tar
-    if %errorlevel% neq 0 (
-        echo Failed to load pls-was.tar image!
-        pause
-        exit /b %errorlevel%
-    )
-) else (
-    echo Was image already exists, skipping load.
+    echo Failed to load pls-was.tar image!
+    pause
+    exit /b %errorlevel%
 )
 
-echo - Checking and loading mysql image...
-docker images -q pls-mysql > nul 2>&1
+echo - Loading mysql image...
+docker load -i pls-mysql.tar
 if %errorlevel% neq 0 (
-    echo - Loading mysql image...
-    docker load -i pls-mysql.tar
-    if %errorlevel% neq 0 (
-        echo Failed to load pls-mysql.tar image!
-        pause
-        exit /b %errorlevel%
-    )
-) else (
-    echo MySQL image already exists, skipping load.
+    echo Failed to load pls-mysql.tar image!
+    pause
+    exit /b %errorlevel%
 )
 
-echo - Checking and loading redis image...
-docker images -q pls-redis > nul 2>&1
+echo - Loading redis image...
+docker load -i pls-redis.tar
 if %errorlevel% neq 0 (
-    echo - Loading redis image...
-    docker load -i pls-redis.tar
-    if %errorlevel% neq 0 (
-        echo Failed to load pls-redis.tar image!
-        pause
-        exit /b %errorlevel%
-    )
-) else (
-    echo Redis image already exists, skipping load.
+    echo Failed to load pls-redis.tar image!
+    pause
+    exit /b %errorlevel%
 )
-
 
 echo STEP 1: Docker images loaded successfully!
 cd ..
