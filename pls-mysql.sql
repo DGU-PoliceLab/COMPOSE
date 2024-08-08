@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.34, for macos13 (arm64)
 --
 -- Host: localhost    Database: pls
 -- ------------------------------------------------------
--- Server version	9.0.1
+-- Server version	9.0.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,6 +27,12 @@ CREATE TABLE `cctv` (
   `name` varchar(24) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `url` varchar(1000) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `thermal_ip` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `thermal_port` int DEFAULT NULL,
+  `rader_ip` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rader_port` int DEFAULT NULL,
+  `toilet_ip` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `toilet_port` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -37,7 +43,7 @@ CREATE TABLE `cctv` (
 
 LOCK TABLES `cctv` WRITE;
 /*!40000 ALTER TABLE `cctv` DISABLE KEYS */;
-INSERT INTO `cctv` VALUES (1,'엣지카메라(현관)','rtsp://admin:wonwoo0!23@172.30.1.42/stream1','2024-07-20 17:22:35'),(2,'엣지카메라(동국대)','rtsp://admin:admin@172.30.1.30/stream1','2024-07-30 17:38:59'),(3,'웹캠(동국대)','rtsp://192.168.50.40:8554/stream','2024-07-30 17:39:55');
+INSERT INTO `cctv` VALUES (1,'엣지카메라(현관)','rtsp://admin:wonwoo0!23@172.30.1.42/stream1','2024-07-20 17:22:35',NULL,NULL,NULL,NULL,NULL,NULL),(2,'엣지카메라(동국대)','rtsp://admin:admin@172.30.1.30/stream1','2024-07-30 17:38:59',NULL,NULL,NULL,NULL,NULL,NULL),(3,'웹캠(동국대)','rtsp://192.168.50.40:8554/stream','2024-07-30 17:39:55',NULL,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `cctv` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +110,7 @@ CREATE TABLE `log` (
   `occurred_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `checked_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=390 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +119,6 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (387,'자해','유치실1','2024-07-22 14:18:02','2024-07-29 00:24:59'),(388,'낙상','유치실1','2024-07-22 14:18:02','2024-07-29 00:25:17'),(389,'낙상','유치실1','2024-07-22 14:26:39',NULL);
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -126,4 +131,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-30 17:40:33
+-- Dump completed on 2024-08-08 12:12:55
